@@ -41,9 +41,9 @@ Recipes are made up of ingredients, ingredients contain (or not) nutrients.
 - name: string
 - image: string
 - dietary: object
-  -- vegan: boolean
-  -- vegetarian: boolean
-  -- gluten-free: boolean
+  - vegan: boolean
+  - vegetarian: boolean
+  - gluten-free: boolean
 - calories (per 100g/ml): number
 - nutrients (per 100g/ml): array of nutrient objects [REL]
 
