@@ -1,0 +1,34 @@
+type Query {
+  ingredient(_id: ID!): Ingredient
+  recipe(_id: ID!): Recipe
+  image(_id: ID!): Image
+  dietary: Dietary
+}
+
+type Ingredient {
+  _id: ID!
+  name: String!
+  calories: Int!
+  dietary: Dietary!
+}
+
+type Recipe {
+  _id: ID!
+  name: String!
+  description: String!
+  images: [Image]
+  category: String!
+  dietary: Dietary!
+}
+
+type Image {
+  _id: ID!
+  url: String!
+  alt: String!
+}
+
+type Dietary {
+  vegetarian: Boolean!
+  vegan: Boolean!
+  glutenFree: Boolean!
+}
