@@ -33,8 +33,8 @@ Recipes are made up of ingredients, ingredients contain (or not) nutrients.
 
 #### Nutrient
 
--name: string
--image: string
+- name: string
+- image: string
 
 #### Ingredient
 
