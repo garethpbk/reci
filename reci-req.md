@@ -55,6 +55,6 @@ Recipes are made up of ingredients, ingredients contain (or not) nutrients.
 - ingredients: array of ingredient objects [REL]
 - images: array of strings
 - dietary: object
-  -- vegan: boolean
-  -- vegetarian: boolean
-  -- gluten-free: boolean
+  - vegan: boolean
+  - vegetarian: boolean
+  - gluten-free: boolean
