@@ -34,7 +34,7 @@ mutation {
     _id: "5bb6b49876eba615c02b4ff6"
     name: "Sugar"
     calories: 150
-    dietary: { vegetarian: true, vegan: true, glutenFree: false }
+    dietary: { vegetarian: true, vegan: true, glutenFree: true }
   ) {
     name
     calories
@@ -70,8 +70,12 @@ mutation {
     name: "Flousug"
     description: "Flour n sugar"
     category: "Breakfast"
-    dietary: { vegetarian: true, vegan: true, glutenFree: false }
-    ingredients: [{ _id: "5b739cacd774cf297481abeb" }, { _id: "5bb6b49876eba615c02b4ff6" }]
+    dietary: { vegetarian: true, vegan: true, glutenFree: true }
+    ingredients: [
+      { _id: "5b739cacd774cf297481abeb", amount: "1 lb" }
+      { _id: "5bb6b49876eba615c02b4ff6", amount: "1/2 lb" }
+    ]
+    steps: [{ content: "Get flour" }, { content: "Get sugar" }]
   ) {
     name
     description
@@ -90,5 +94,6 @@ mutation {
         glutenFree
       }
     }
+    steps
   }
 }

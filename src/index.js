@@ -83,22 +83,31 @@ const resolvers = {
     createRecipe: async (_, args) => {
       const newRecipe = new Recipe(args);
 
-      const { ingredients } = args;
-      const ingredientsToAdd = [];
+      const { ingredients, steps } = args;
 
       const recipeIngredients = await Promise.all(
         ingredients.map(async ingredient => {
-          const { _id } = ingredient;
+          const { _id, amount } = ingredient;
 
           const foundIngredient = await Ingredient.findById({ _id });
 
-          ingredientsToAdd.push(foundIngredient);
+          foundIngredient.amount = amount;
 
           return foundIngredient;
         })
-      ).then(() => (newRecipe.ingredients = [...ingredientsToAdd]));
+      );
+      newRecipe.ingredients = [...recipeIngredients];
 
-      console.log(newRecipe);
+      const checkDietary = await Promise.all(
+        recipeIngredients.map(async ingredient => {
+          const { dietary } = newRecipe;
+          const { vegetarian, vegan, glutenFree } = ingredient.dietary;
+
+          if (!vegetarian) dietary.vegetarian = false;
+          if (!vegan) dietary.vegan = false;
+          if (!glutenFree) dietary.glutenFree = false;
+        })
+      );
 
       newRecipe.save();
 
@@ -118,6 +127,6 @@ const server = new GraphQLServer({
   resolvers,
 });
 
-const PORT = process.env.PORT || 6969;
+const PORT = process.env.PORT;
 
 server.start({ port: PORT }, () => console.log(`Server is running on ${PORT}`));
