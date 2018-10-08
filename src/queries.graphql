@@ -1,0 +1,94 @@
+{
+  ingredients {
+    _id
+    name
+    calories
+    dietary {
+      vegetarian
+      vegan
+      glutenFree
+    }
+  }
+}
+
+mutation {
+  deleteIngredient(_id: "5bb402d578463d0558f4d951") {
+    name
+  }
+}
+
+mutation {
+  createIngredient(name: "Sugar", calories: 100, dietary: { vegetarian: true, vegan: true, glutenFree: true }) {
+    name
+    calories
+    dietary {
+      vegetarian
+      vegan
+      glutenFree
+    }
+  }
+}
+
+mutation {
+  updateIngredient(
+    _id: "5bb6b49876eba615c02b4ff6"
+    name: "Sugar"
+    calories: 150
+    dietary: { vegetarian: true, vegan: true, glutenFree: false }
+  ) {
+    name
+    calories
+    dietary {
+      vegetarian
+      vegan
+      glutenFree
+    }
+  }
+}
+
+{
+  recipes {
+    _id
+    name
+    description
+    category
+    dietary {
+      vegetarian
+      vegan
+      glutenFree
+    }
+    ingredients {
+      _id
+      name
+      calories
+    }
+  }
+}
+
+mutation {
+  createRecipe(
+    name: "Flousug"
+    description: "Flour n sugar"
+    category: "Breakfast"
+    dietary: { vegetarian: true, vegan: true, glutenFree: false }
+    ingredients: [{ _id: "5b739cacd774cf297481abeb" }, { _id: "5bb6b49876eba615c02b4ff6" }]
+  ) {
+    name
+    description
+    category
+    dietary {
+      vegetarian
+      vegan
+      glutenFree
+    }
+    ingredients {
+      name
+      calories
+      dietary {
+        vegetarian
+        vegan
+        glutenFree
+      }
+    }
+  }
+}

@@ -11,6 +11,7 @@ const RecipeSchema = new Schema({
     vegan: { type: Boolean, required: true },
     glutenFree: { type: Boolean, required: true },
   },
+  ingredients: { type: Array, required: true },
 });
 
 module.exports = mongoose.model('Recipe', RecipeSchema);

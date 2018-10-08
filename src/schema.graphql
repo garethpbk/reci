@@ -1,17 +1,25 @@
 type Query {
   ingredient(_id: ID!): Ingredient
-  ingredients: Ingredients
+  ingredients: [Ingredient!]!
   recipe(_id: ID!): Recipe
+  recipes: [Recipe!]!
   image(_id: ID!): Image
   dietary: Dietary
 }
 
 type Mutation {
   createIngredient(name: String!, calories: Int!, dietary: DietaryInput!): Ingredient!
-}
+  deleteIngredient(_id: ID!): Ingredient!
+  updateIngredient(_id: ID!, name: String, calories: Int, dietary: DietaryInput): Ingredient!
 
-type Ingredients {
-  ingredients: [Ingredient]
+  createRecipe(
+    name: String!
+    description: String!
+    category: String!
+    dietary: DietaryInput!
+    ingredients: [IngredientInput!]!
+  ): Recipe!
+  deleteRecipe(_id: ID!): Recipe!
 }
 
 type Ingredient {
@@ -21,6 +29,13 @@ type Ingredient {
   dietary: Dietary!
 }
 
+input IngredientInput {
+  _id: ID!
+  # name: String!
+  # calories: Int!
+  # dietary: DietaryInput!
+}
+
 type Recipe {
   _id: ID!
   name: String!
@@ -28,6 +43,7 @@ type Recipe {
   images: [Image]
   category: String!
   dietary: Dietary!
+  ingredients: [Ingredient!]!
 }
 
 type Image {
