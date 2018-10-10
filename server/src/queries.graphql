@@ -47,6 +47,28 @@ mutation {
 }
 
 {
+  recipe(_id: "5bbd8cc5f2743f1df8e1e38f") {
+    _id
+    name
+    description
+    category
+    dietary {
+      vegetarian
+      vegan
+      glutenFree
+    }
+    ingredients {
+      _id
+      name
+      calories
+    }
+    steps {
+      content
+    }
+  }
+}
+
+{
   recipes {
     _id
     name
@@ -61,6 +83,9 @@ mutation {
       _id
       name
       calories
+    }
+    steps {
+      content
     }
   }
 }
@@ -88,12 +113,15 @@ mutation {
     ingredients {
       name
       calories
+      amount
       dietary {
         vegetarian
         vegan
         glutenFree
       }
     }
-    steps
+    steps {
+      content
+    }
   }
 }

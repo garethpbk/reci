@@ -36,7 +36,7 @@ const resolvers = {
       const recipes = await Recipe.find().lean();
 
       const allRecipes = recipes.map(recipe => {
-        const { name, description, category, dietary, _id, ingredients } = recipe;
+        const { name, description, category, dietary, _id, ingredients, steps } = recipe;
         return {
           _id,
           name,
@@ -44,6 +44,7 @@ const resolvers = {
           category,
           dietary,
           ingredients,
+          steps,
         };
       });
 
